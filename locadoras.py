@@ -38,11 +38,18 @@ def menu3():
 
 def cadastrar_locadora():
     chaves = ["Nome", "CNPJ", "Email", "Telefone", "Senha"]
-    locadoras = {}
+    validadores = {
+        "Nome": validar_loc_nome
+        "CNPJ": validar_cnpj
+        "Email": validar_loc_email
+        "Telefone": validar_loc_tel
+        "Senha": validar_loc_senha
+    }
+    locadora = {}
     for chave in chaves:
         dados_locadora = input(f"Digite seu(sua) {chave}: ")
-        locadoras[chave] = dados_locadora
-    return locadoras
+        locadora[chave] = dados_locadora
+    return locadora
 
 
 def add_locadora(locadora, arquivo):

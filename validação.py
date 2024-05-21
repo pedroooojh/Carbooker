@@ -80,3 +80,50 @@ def validar_senha(senha):
     if not (has_upper and has_lower and has_digit and has_symbol):
         return False, "Senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um símbolo."
     return True, ""
+
+
+
+def validar_loc_nome(nome):
+    if len(nome) == 0:
+        return False, "Nome não pode ficar vazio."
+    elif not nome.isalpha():
+        return False, "Nome deve ser composto apenas por letras."
+    return True, ""
+
+
+def validar_cnpj(cnpj):
+    if len(cnpj) == 14 and cnpj.isdigit():
+        return True
+    else:
+        print("CNPJ inválido. Por favor, insira um CNPJ válido.")
+        return False
+
+
+def validar_loc_email(email):
+    if '@' not in email:
+        return False, "Email deve conter '@'."
+    elif len(email) == 0:
+        return False, "Email não pode ficar vazio."
+    return True, ""
+
+
+def validar_loc_tel(telefone):
+    if not telefone.isdigit():
+        return False, "Telefone deve ser composto apenas por números."
+    elif len(telefone) != 11:
+        return False, "Telefone deve ter exatamente 11 caracteres."
+    elif telefone[2] != '9':
+        return False, "Telefone deve começar com um 9."
+    return True, ""
+
+
+def validar_loc_senha(senha):
+    if len(senha) == 0:
+        return False, "Senha não pode ficar vazia."
+    has_upper = any(c.isupper() for c in senha)
+    has_lower = any(c.islower() for c in senha)
+    has_digit = any(c.isdigit() for c in senha)
+    has_symbol = any(not c.isalnum() for c in senha)
+    if not (has_upper and has_lower and has_digit and has_symbol):
+        return False, "Senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um símbolo."
+    return True, ""
